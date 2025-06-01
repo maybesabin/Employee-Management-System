@@ -28,7 +28,7 @@ const TaskCard = ({
         const tasksFromStorage = localStorage.getItem("tasks")
         if (!tasksFromStorage || !currentTask) return
 
-        if (currentTask.isFailed === true && currentTask.isCompleted === null) {
+        if (currentTask.isCompleted === true) {
             toast.error("This task is already marked as completed.")
             return
 
@@ -53,7 +53,7 @@ const TaskCard = ({
         const tasksFromStorage = localStorage.getItem("tasks")
         if (!tasksFromStorage || !currentTask) return
 
-        if (currentTask.isFailed === true && currentTask.isCompleted === null) {
+        if (currentTask.isFailed === true) {
             toast.error("This task is already marked as failed.")
             return
 

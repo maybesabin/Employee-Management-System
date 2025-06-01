@@ -11,8 +11,12 @@ const LoginCard = ({ user }: { user: "Employee" | "Employer" }) => {
 
     const navigate = useNavigate();
     const login = useAuthStore((state) => state.login)
-    const storedEmployees = localStorage.getItem("employees")
-    const employees = storedEmployees ? JSON.parse(storedEmployees) : null
+    const storedData = localStorage.getItem(user === "Employee" ? "employees" : "employer");
+    const employees = storedData
+        ? user === "Employee"
+            ? JSON.parse(storedData)
+            : [JSON.parse(storedData)]
+        : null;
 
     const [userData, setUserData] = useState({
         name: "",
