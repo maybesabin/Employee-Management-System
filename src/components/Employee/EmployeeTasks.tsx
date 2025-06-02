@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TaskCard from "../TaskCard";
+import EmployeeCard from "../EmployeeCard";
 import type { Task } from "@/types/task";
 import { useGlobalContext } from "@/context/GlobalContext";
 
@@ -20,7 +20,7 @@ const EmployeeTasks = () => {
                 </TabsList>
                 <TabsContent value="all" className="task-container">
                     {allTasks.all.map((item: Task, idx: number) => (
-                        <TaskCard
+                        <EmployeeCard
                             key={idx}
                             title={item.title}
                         />
@@ -28,7 +28,7 @@ const EmployeeTasks = () => {
                 </TabsContent>
                 <TabsContent value="incomplete" className="task-container">
                     {allTasks.incomplete.map((item: Task, idx: number) => (
-                        <TaskCard
+                        <EmployeeCard
                             key={idx}
                             title={item.title}
                         />
@@ -36,7 +36,7 @@ const EmployeeTasks = () => {
                 </TabsContent>
                 <TabsContent value="completed" className="task-container">
                     {allTasks.completed.map((item: Task, idx: number) => (
-                        <TaskCard
+                        <EmployeeCard
                             key={idx}
                             title={item.title}
                         />
@@ -44,7 +44,7 @@ const EmployeeTasks = () => {
                 </TabsContent>
                 <TabsContent value="failed" className="task-container">
                     {allTasks.failed.map((item: Task, idx: number) => (
-                        <TaskCard
+                        <EmployeeCard
                             key={idx}
                             title={item.title}
                         />
