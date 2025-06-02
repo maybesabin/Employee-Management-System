@@ -9,7 +9,8 @@ const EmployerDashboard = () => {
     const tasks = getAllSavedTasks()
 
     return (
-        <div className="flex-center">
+        <div className="flex-center relative">
+
             <div className="layout">
                 {/* Cards */}
                 <div className="card-container">

@@ -1,10 +1,22 @@
 import type { Task } from "@/types/task";
+import { Button } from "../ui/button";
+import { Trash } from "lucide-react";
+import { toast } from "sonner";
 
-const Popup = ({
+const TasksPopup = ({
     tasks
 }: {
     tasks: Task[]
 }) => {
+
+    const handleDeleteTask = (title: string) => {
+        const storedTasks = localStorage.getItem("tasks")
+        const parsedTasks = storedTasks ? JSON.parse(storedTasks) : []
+        const updatedTasks = parsedTasks?.filter((t: Task) => t.title !== title);
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks))
+        toast.success(`Deleted task (${title})`)
+    }
+
     return (
         <div className={`${(tasks.length != 0) ? "visible scale-100 blur-none" : "invisible scale-75 blur-md"} transition-all duration-300 ease-in-out fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border rounded-lg p-4 dark:bg-black bg-white md:min-w-96 min-w-[85%] z-50`}>
             <div className="flex flex-col items-start gap-4">
@@ -19,7 +31,13 @@ const Popup = ({
                                 <h4 className="md:text-xs text-[9px]">{t.description}</h4>
                             </div>
                         </div>
-                        <span className="text-xs md:block hidden">{t.date}</span>
+                        <Button
+                            onClick={() => handleDeleteTask(t.title)}
+                            size={'icon'}
+                            variant={"destructive"}
+                            className="text-xs">
+                            <Trash />
+                        </Button>
                     </div>
                 ))}
             </div>
@@ -27,4 +45,4 @@ const Popup = ({
     )
 }
 
-export default Popup
+export default TasksPopup

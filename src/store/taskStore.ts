@@ -12,11 +12,6 @@ export const getAllSavedTasks = () => {
     return storedTasks ? JSON.parse(storedTasks) : null
 }
 
-export const getAllEmployees = () => {
-    const storedEmployees = localStorage.getItem("employees")
-    return storedEmployees ? JSON.parse(storedEmployees) : null
-}
-
 export const findUserTasks = (userEmail: string) => {
     const savedTasks = getAllSavedTasks();
     const userTasks = savedTasks ? savedTasks.filter((task: Task) => task.userEmail === userEmail) : null
